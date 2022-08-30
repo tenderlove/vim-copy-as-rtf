@@ -24,7 +24,6 @@ if !exists('g:copy_as_rtf_preserve_indent')
 endif
 
 if !executable('pbcopy') || !executable('textutil')
-  echomsg 'cannot load copy-as-rtf plugin, not on a mac?'
   finish
 endif
 
