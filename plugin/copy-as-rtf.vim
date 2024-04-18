@@ -85,9 +85,9 @@ function! s:CopyRTF(bufnr, line1, line2)
     endif
 
     call tohtml#Convert2HTML(1, line('$'))
-    let filename = tempname() ".html"
+    let filename = tempname() . ".html"
     silent exe ":w!" filename
-    silent exe "%!textutil -convert rtf -stdout " filename " | pbcopy"
+    silent exe "%!textutil -convert rtf -stdout " . filename . " | sed s/Courier-Bold/Courier/ | sed s/Courier/" . g:rtf_font . "/g | pbcopy"
     silent bd!
     silent bd!
     call delete(filename)
